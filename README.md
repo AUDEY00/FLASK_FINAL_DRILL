@@ -189,15 +189,18 @@ Response Example:
 
 To run the unit tests, use the following command:
 
-python -m unittest discover
+(python -m unittest discover)
 
 test.py
 
 import unittest
+
 import warnings
+
 from api import app
 
 class MyAppTests(unittest.TestCase):
+
     def setUp(self):
         app.config["TESTING"] = True
         self.app = app.test_client()
