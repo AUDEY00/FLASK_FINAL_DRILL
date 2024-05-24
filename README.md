@@ -1,14 +1,18 @@
 # aquaflask
+=============
 # Company Employee API
+=======================
 
 This project is a Flask-based RESTful API to manage company employees. It supports operations like fetching employee details, adding new employees, updating existing employees, and deleting employees.
 
 #Project Structure
+==================
 
 - `api.py`: The main Flask application file containing all API endpoints.
 - `tests.py`: Unit tests for the API endpoints.
 
 #Installation Instructions
+==========================
 
 1. Clone the repository
    ```bash
@@ -32,6 +36,7 @@ Set Up Mysql database
 
 
 CREATE DATABASE company;
+=======================
 
 USE company;
 
@@ -56,7 +61,9 @@ To run the Flask application, use the following command:
 The application will be accessible at http://127.0.0.1:5000/.
 
 API Endpoints
+==============
 1. Get All Employees
+=====================
 
    Endpoint: /employee
 
@@ -85,6 +92,7 @@ POSTMAN COMMAND(http://127.0.0.1:5000/employee)
 
 
 2. Get Employee by SSN
+=======================
 
 Endpoint: /employee/<int:ssn>
 
@@ -111,6 +119,7 @@ POSTMAN COMMAND(http://127.0.0.1:5000/employee/999887778)
 
 
 3. Add a New Employee
+======================
 
 Endpoint: /employee
 
@@ -147,6 +156,7 @@ Response example
 
 
 4. Update an Employee
+======================
 
 Endpoint: /employee/<int:ssn> 
 
@@ -181,6 +191,7 @@ Request Body Example:
 
 
 5. Delete an Employee
+======================
 
 Endpoint: /employee/<int:ssn>
 
@@ -203,7 +214,7 @@ To run the unit tests, use the following command:
 (python -m unittest discover)
 
 test.py(name of the python script)
-
+=================================
    import unittest
 
    import warnings
@@ -247,7 +258,7 @@ Copy the above content and paste it into a file named `README.md` in your GitHub
 
 ##LICENSED
 
-MIT License
+MIT https://www.bing.com/ck/a?!&&p=bee4673b7e660093JmltdHM9MTcxNjUwODgwMCZpZ3VpZD0zNDA4YmE2MC02Zjc5LTYwNjktMGFhNC1hOGRlNmVhMDYxZjUmaW5zaWQ9NTIyNQ&ptn=3&ver=2&hsh=3&fclid=3408ba60-6f79-6069-0aa4-a8de6ea061f5&psq=mit+licensed&u=a1aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTUlUX2xpY2Vuc2U&ntb=1
 
 
 
