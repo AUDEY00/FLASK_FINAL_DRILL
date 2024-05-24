@@ -64,6 +64,8 @@ API Endpoints
 
    Description: Fetches details of all employees.
 
+POSTMAN COMMAND(http://127.0.0.1:5000/employee)
+
    Response Example:
 
 
@@ -90,6 +92,8 @@ Method: GET
 
 Description: Fetches details of an employee by SSN.
 
+POSTMAN COMMAND(http://127.0.0.1:5000/employee/999887778)
+
    Response Example:
    {
 
@@ -113,6 +117,8 @@ Endpoint: /employee
 Method: POST
 
 Description: Adds a new employee.
+
+POSTMAN COMMAND(http://127.0.0.1:5000/employee)
 
 Request Body Example:
 
@@ -144,9 +150,11 @@ Response example
 
 Endpoint: /employee/<int:ssn> 
 
-Method: PUT |
+Method: PUT 
 
 Description: Updates details of an employee. 
+
+POSTMAN COMMAND(http://127.0.0.1:5000/employee/999887780)
 
 Request Body Example:
 
@@ -171,6 +179,7 @@ Request Body Example:
      "rows_affected": 1
    }
 
+
 5. Delete an Employee
 
 Endpoint: /employee/<int:ssn>
@@ -178,6 +187,8 @@ Endpoint: /employee/<int:ssn>
 Method: DELETE
 
 Description: Deletes an employee by SSN.
+
+POSTMAN COMMAND (http://127.0.0.1:5000/employee/999887777)
 
 Response Example:
    
@@ -191,15 +202,15 @@ To run the unit tests, use the following command:
 
 (python -m unittest discover)
 
-test.py
+test.py(name of the python script)
 
-import unittest
+   import unittest
 
-import warnings
+   import warnings
 
-from api import app
+   from api import app
 
-class MyAppTests(unittest.TestCase):
+   class MyAppTests(unittest.TestCase):
 
     def setUp(self):
         app.config["TESTING"] = True
@@ -224,6 +235,18 @@ class MyAppTests(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
 
+Additional Information
+
+Ensure your MySQL server is running and accessible.
+
+Update any hardcoded values in the tests and code as per your actual database entries.
+
+Feel free to contribute and open issues if you find any bugs or have suggestions for improvements!
+
+Copy the above content and paste it into a file named `README.md` in your GitHub repository. This documentation will help others understand your project, set it up, and run it          correctly.
+
+##LICENSED
+MIT License
 
 
 
