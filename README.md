@@ -1,5 +1,3 @@
-# aquaflask
-
 # Company Employee API
 =======================
 
