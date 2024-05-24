@@ -24,9 +24,12 @@ intall dependencies
 
 Set Up Mysql database
 
--Create a database named company.
--Create a table named employee with the necessary columns.
--Update the database credentials in api.py if needed.
+ -Create a database named company.
+
+ -Create a table named employee with the necessary columns.
+
+ -Update the database credentials in api.py if needed.
+
 
 CREATE DATABASE company;
 
