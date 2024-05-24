@@ -86,15 +86,17 @@ def add_actor():
     )
 
 
-@app.route("/actors/<int:id>", methods=["PUT"])
+@app.route("/employee/<int:id>", methods=["PUT"])
 def update_actor(id):
     cur = mysql.connection.cursor()
     info = request.get_json()
-    first_name = info["first_name"]
-    last_name = info["last_name"]
+    first_name = info["Fname"]
+    minit_name = info["Minit"]
+    last_name = info["Lname"]
+    dl_id = info["DL_id"]
     cur.execute(
-        """ UPDATE actor SET first_name = %s, last_name = %s WHERE actor_id = %s """,
-        (first_name, last_name, id),
+        """ UPDATE actor SET first_name = %s, last_name = %s WHERE DL_id = %s """,
+        (first_name, last_name, dl_id),
     )
     mysql.connection.commit()
     rows_affected = cur.rowcount
@@ -107,10 +109,10 @@ def update_actor(id):
     )
 
 
-@app.route("/actors/<int:id>", methods=["DELETE"])
-def delete_actor(id):
+@app.route("/employee/<int:dl_id>", methods=["DELETE"])
+def delete_actor(dl_id):
     cur = mysql.connection.cursor()
-    cur.execute(""" DELETE FROM actor where actor_id = %s """, (id,))
+    cur.execute(""" DELETE FROM actor where actor_id = %s """, (dl_id,))
     mysql.connection.commit()
     rows_affected = cur.rowcount
     cur.close()
@@ -121,7 +123,7 @@ def delete_actor(id):
         200,
     )
 
-@app.route("/actors/format", methods=["GET"])
+@app.route("/employee/format", methods=["GET"])
 def get_params():
     fmt = request.args.get('id')
     foo = request.args.get('aaaa')
