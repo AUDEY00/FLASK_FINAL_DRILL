@@ -50,4 +50,30 @@ CREATE TABLE employee (
 );
 Set SSN into AUTO INCREMENT(AI) at your workbench so you dont have to worry for setting the SSN of employee.
 
+Running the Application
+To run the Flask application, use the following command:
+   python api.py
+The application will be accessible at http://127.0.0.1:5000/.
+
+API Endpoints
+1. Get All Employees
+   Endpoint: /employee
+   Method: GET
+   Description: Fetches details of all employees.
+   Response Example:
+[
+  {
+    "SSN": 888665555,
+    "Fname": "James",
+    "Minit": "A",
+    "Lname": "Doe",
+    "Bdate": "1980-01-01",
+    "Address": "123 Test St",
+    "Sex": "M",
+    "Salary": 60000.00,
+    "Super_ssn": 123456789,
+    "DL_id": "D1234567"
+  }
+]
+
 
