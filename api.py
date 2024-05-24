@@ -166,7 +166,7 @@ def delete_actor(ssn):
     cur.close()
     return make_response(
         jsonify(
-            {"message": "actor deleted successfully", "rows_affected": rows_affected}
+            {"message": "employee deleted successfully", "rows_affected": rows_affected}
         ),
         200,
     )
