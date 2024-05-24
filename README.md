@@ -62,7 +62,7 @@ The application will be accessible at http://127.0.0.1:5000/.
 
 API Endpoints
 ==============
-1. Get All Employees
+#1. Get All Employees
 
    Endpoint: /employee
 
@@ -90,7 +90,7 @@ POSTMAN COMMAND(http://127.0.0.1:5000/employee)
   }
 
 
-2. Get Employee by SSN
+#2. Get Employee by SSN
 
 Endpoint: /employee/<int:ssn>
 
@@ -116,7 +116,7 @@ POSTMAN COMMAND(http://127.0.0.1:5000/employee/999887778)
    }
 
 
-3. Add a New Employee
+#3. Add a New Employee
 
 Endpoint: /employee
 
@@ -152,7 +152,7 @@ Response example
    }
 
 
-4. Update an Employee
+#4. Update an Employee
 
 Endpoint: /employee/<int:ssn> 
 
@@ -186,7 +186,7 @@ Request Body Example:
    }
 
 
-5. Delete an Employee
+#5. Delete an Employee
 
 Endpoint: /employee/<int:ssn>
 
@@ -241,7 +241,7 @@ test.py(name of the python script)
 if __name__ == "__main__":
     unittest.main()
 
-Additional Information
+##Additional Information
 
 Ensure your MySQL server is running and accessible.
 
@@ -253,7 +253,7 @@ Copy the above content and paste it into a file named `README.md` in your GitHub
 
 ##LICENSED
 
-MIT https://www.bing.com/ck/a?!&&p=bee4673b7e660093JmltdHM9MTcxNjUwODgwMCZpZ3VpZD0zNDA4YmE2MC02Zjc5LTYwNjktMGFhNC1hOGRlNmVhMDYxZjUmaW5zaWQ9NTIyNQ&ptn=3&ver=2&hsh=3&fclid=3408ba60-6f79-6069-0aa4-a8de6ea061f5&psq=mit+licensed&u=a1aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTUlUX2xpY2Vuc2U&ntb=1
+[MIT](http://en.wikipedia.org/wiki/MIT_License) license.
 
 
 
