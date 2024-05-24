@@ -61,7 +61,6 @@ The application will be accessible at http://127.0.0.1:5000/.
 API Endpoints
 ==============
 1. Get All Employees
-=====================
 
    Endpoint: /employee
 
@@ -90,7 +89,6 @@ POSTMAN COMMAND(http://127.0.0.1:5000/employee)
 
 
 2. Get Employee by SSN
-=======================
 
 Endpoint: /employee/<int:ssn>
 
@@ -117,7 +115,6 @@ POSTMAN COMMAND(http://127.0.0.1:5000/employee/999887778)
 
 
 3. Add a New Employee
-======================
 
 Endpoint: /employee
 
@@ -154,7 +151,6 @@ Response example
 
 
 4. Update an Employee
-======================
 
 Endpoint: /employee/<int:ssn> 
 
@@ -244,7 +240,7 @@ test.py(name of the python script)
 if __name__ == "__main__":
     unittest.main()
 
-##Additional Information
+Additional Information
 =========================
 
 Ensure your MySQL server is running and accessible.
