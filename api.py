@@ -94,6 +94,10 @@ def update_employee(ssn):
     minit_name = info.get("Minit")
     last_name = info.get("Lname")
     dl_id = info.get("DL_id")
+    bdate = info["Bdate"]
+    address = info["Address"]
+    sex = info["Sex"]
+    salary = info["Salary"]
     fields = []
     values = []
 
@@ -109,6 +113,18 @@ def update_employee(ssn):
     if dl_id:
         fields.append("DL_id = %s")
         values.append(dl_id)
+    if bdate:
+        fields.append("Bdate = %s")
+        values.append(bdate)
+    if address:
+        fields.append("Address = %s")
+        values.append(address)
+    if sex:
+        fields.append("Sex = %s")
+        values.append(sex)
+    if salary:
+        fields.append("Salary = %s")
+        values.append(salary)
 
     if not fields:
         return make_response(
@@ -141,12 +157,10 @@ def update_employee(ssn):
         200,
     )
 
-
-
 @app.route("/employee/<int:ssn>", methods=["DELETE"])
 def delete_actor(ssn):
     cur = mysql.connection.cursor()
-    cur.execute(""" DELETE FROM actor where actor_id = %s """, (ssn,))
+    cur.execute(""" DELETE FROM employee where ssn = %s """, (ssn,))
     mysql.connection.commit()
     rows_affected = cur.rowcount
     cur.close()
