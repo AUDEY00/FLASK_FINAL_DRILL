@@ -57,12 +57,18 @@ The application will be accessible at http://127.0.0.1:5000/.
 
 API Endpoints
 1. Get All Employees
+
    Endpoint: /employee
+
    Method: GET
+
    Description: Fetches details of all employees.
+
    Response Example:
+
 [
   {
+    
     "SSN": 888665555,
     "Fname": "James",
     "Minit": "A",
