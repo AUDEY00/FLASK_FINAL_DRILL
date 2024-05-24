@@ -82,4 +82,65 @@ API Endpoints
   }
 ]
 
+2. Get Employee by SSN
+
+Endpoint: /employee/<int:ssn>
+
+Method: GET
+
+Description: Fetches details of an employee by SSN.
+
+   Response Example:
+[
+   {
+
+      "SSN": 888665555,
+      "Fname": "James",
+      "Minit": "A",
+      "Lname": "Doe",
+      "Bdate": "1980-01-01",
+     "Address": "123 Test St",
+     "Sex": "M",
+     "Salary": 60000.00,
+     "Super_ssn": 123456789,
+     "DL_id": "D1234567"
+   }
+]
+
+3. Add a New Employee
+
+Endpoint: /employee
+
+Method: POST
+
+Description: Adds a new employee.
+
+Request Body Example:
+
+[
+   {
+
+      "Fname": "James",
+     "Minit": "A",
+     "Lname": "Doe",
+     "Bdate": "1980-01-01",
+     "Address": "123 Test St",
+     "Sex": "M",
+     "Salary": 60000.00,
+     "Super_ssn": 123456789,
+     "DL_id": "D1234567"
+   }
+]
+
+Response example
+[
+   {
+
+     "message": "employee added successfully",
+     "rows_affected": 1
+   }
+]
+
+
+
 
