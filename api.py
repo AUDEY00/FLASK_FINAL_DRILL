@@ -31,7 +31,7 @@ def get_actors():
     return make_response(jsonify(data), 200)
 
 
-@app.route("/actors/<int:id>", methods=["GET"])
+@app.route("/employee/<int:id>", methods=["GET"])
 def get_actor_by_id(id):
     data = data_fetch("""SELECT * FROM actor where actor_id = {}""".format(id))
     return make_response(jsonify(data), 200)
@@ -85,34 +85,68 @@ def add_actor():
         201,
     )
 
-
-@app.route("/employee/<int:id>", methods=["PUT"])
-def update_actor(id):
+@app.route("/employee/<int:ssn>", methods=["PUT"])
+def update_employee(ssn):
     cur = mysql.connection.cursor()
     info = request.get_json()
-    first_name = info["Fname"]
-    minit_name = info["Minit"]
-    last_name = info["Lname"]
-    dl_id = info["DL_id"]
-    cur.execute(
-        """ UPDATE actor SET first_name = %s, last_name = %s WHERE DL_id = %s """,
-        (first_name, last_name, dl_id),
-    )
-    mysql.connection.commit()
-    rows_affected = cur.rowcount
-    cur.close()
+
+    first_name = info.get("Fname")
+    minit_name = info.get("Minit")
+    last_name = info.get("Lname")
+    dl_id = info.get("DL_id")
+    fields = []
+    values = []
+
+    if first_name:
+        fields.append("Fname = %s")
+        values.append(first_name)
+    if minit_name:
+        fields.append("Minit = %s")
+        values.append(minit_name)
+    if last_name:
+        fields.append("Lname = %s")
+        values.append(last_name)
+    if dl_id:
+        fields.append("DL_id = %s")
+        values.append(dl_id)
+
+    if not fields:
+        return make_response(
+            jsonify({"message": "No fields provided to update"}),
+            400,
+        )
+    values.append(ssn)
+    update_statement = f"UPDATE employee SET {', '.join(fields)} WHERE SSN = %s"
+    
+    try:
+        cur.execute(update_statement, tuple(values))
+        mysql.connection.commit()
+        rows_affected = cur.rowcount
+    except Exception as e:
+        return make_response(
+            jsonify({"message": "Error updating employee", "error": str(e)}),
+            500,
+        )
+    finally:
+        cur.close()
+
+    if rows_affected == 0:
+        return make_response(
+            jsonify({"message": "No employee found with the provided SSN"}),
+            404,
+        )
+
     return make_response(
-        jsonify(
-            {"message": "actor updated successfully", "rows_affected": rows_affected}
-        ),
+        jsonify({"message": "Employee updated successfully", "rows_affected": rows_affected}),
         200,
     )
 
 
-@app.route("/employee/<int:dl_id>", methods=["DELETE"])
-def delete_actor(dl_id):
+
+@app.route("/employee/<int:ssn>", methods=["DELETE"])
+def delete_actor(ssn):
     cur = mysql.connection.cursor()
-    cur.execute(""" DELETE FROM actor where actor_id = %s """, (dl_id,))
+    cur.execute(""" DELETE FROM actor where actor_id = %s """, (ssn,))
     mysql.connection.commit()
     rows_affected = cur.rowcount
     cur.close()
