@@ -66,7 +66,7 @@ API Endpoints
 
    Response Example:
 
-[
+
   {
     
     "SSN": 888665555,
@@ -80,7 +80,7 @@ API Endpoints
     "Super_ssn": 123456789,
     "DL_id": "D1234567"
   }
-]
+
 
 2. Get Employee by SSN
 
@@ -91,7 +91,6 @@ Method: GET
 Description: Fetches details of an employee by SSN.
 
    Response Example:
-[
    {
 
       "SSN": 888665555,
@@ -105,7 +104,7 @@ Description: Fetches details of an employee by SSN.
      "Super_ssn": 123456789,
      "DL_id": "D1234567"
    }
-]
+
 
 3. Add a New Employee
 
@@ -117,7 +116,7 @@ Description: Adds a new employee.
 
 Request Body Example:
 
-[
+
    {
 
       "Fname": "James",
@@ -130,16 +129,100 @@ Request Body Example:
      "Super_ssn": 123456789,
      "DL_id": "D1234567"
    }
-]
+
 
 Response example
-[
+
    {
 
      "message": "employee added successfully",
      "rows_affected": 1
    }
-]
+
+
+4. Update an Employee
+
+Endpoint: /employee/<int:ssn> 
+
+Method: PUT |
+
+Description: Updates details of an employee. 
+
+Request Body Example:
+
+   {
+
+     "Fname": "James",
+     "Minit": "A",
+      "Lname": "Smith",
+     "Bdate": "1980-01-01",
+     "Address": "123 Test St",
+     "Sex": "M",
+      "Salary": 65000.00,
+     "Super_ssn": 123456789,
+     "DL_id": "D1234567"
+   }
+ 
+ response example
+
+   {
+
+     "message": "Employee updated successfully",
+     "rows_affected": 1
+   }
+
+5. Delete an Employee
+
+Endpoint: /employee/<int:ssn>
+
+Method: DELETE
+
+Description: Deletes an employee by SSN.
+
+Response Example:
+   
+   {
+
+     "message": "employee deleted successfully",
+     "rows_affected": 1
+   }
+
+To run the unit tests, use the following command:
+
+python -m unittest discover
+
+test.py
+
+import unittest
+import warnings
+from api import app
+
+class MyAppTests(unittest.TestCase):
+    def setUp(self):
+        app.config["TESTING"] = True
+        self.app = app.test_client()
+        warnings.simplefilter("ignore", category=DeprecationWarning)
+
+    def test_index_page(self):
+        response = self.app.get("/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode(), "<p>Hello, World!</p>")
+
+    def test_get_employees(self):
+        response = self.app.get("/employee")
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue("James" in response.data.decode())
+
+    def test_get_employee_by_id(self):
+        response = self.app.get("/employee/888665555")
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue("James" in response.data.decode())
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+
 
 
 
