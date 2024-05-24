@@ -36,6 +36,7 @@ CREATE DATABASE company;
 USE company;
 
 CREATE TABLE employee (
+
     SSN INT PRIMARY KEY,
     Fname VARCHAR(50),
     Minit CHAR(10),
