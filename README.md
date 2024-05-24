@@ -240,6 +240,7 @@ if __name__ == "__main__":
     unittest.main()
 
 ##Additional Information
+=========================
 
 Ensure your MySQL server is running and accessible.
 
