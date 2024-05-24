@@ -57,15 +57,22 @@ def get_movies_by_actor(id):
     )
 
 
-@app.route("/actors", methods=["POST"])
+@app.route("/employee", methods=["POST"])
 def add_actor():
     cur = mysql.connection.cursor()
     info = request.get_json()
-    first_name = info["first_name"]
-    last_name = info["last_name"]
+    first_name = info["Fname"]
+    minit_name = info["Minit"]
+    last_name = info["Lname"]
+    bdate = info["Bdate"]
+    address = info["Address"]
+    sex = info["Sex"]
+    salary = info["Salary"]
+    super_ssn = info["Super_ssn"]
+    dl_id = info["DL_id"]
     cur.execute(
-        """ INSERT INTO actor (first_name, last_name) VALUE (%s, %s)""",
-        (first_name, last_name),
+        """ INSERT INTO employee (Fname, Minit,Lname,Bdate,Address,Sex,Salary,Super_ssn,DL_id) VALUE (%s, %s,%s,%s,%s,%s,%s,%s,%s)""",
+        (first_name, last_name,minit_name,bdate,address,sex,salary,super_ssn,dl_id),
     )
     mysql.connection.commit()
     print("row(s) affected :{}".format(cur.rowcount))
