@@ -61,6 +61,7 @@ The application will be accessible at http://127.0.0.1:5000/.
 API Endpoints
 ==============
 1. Get All Employees
+=====================
 
    Endpoint: /employee
 
@@ -87,8 +88,8 @@ POSTMAN COMMAND(http://127.0.0.1:5000/employee)
     "DL_id": "D1234567"
   }
 
-
 2. Get Employee by SSN
+========================
 
 Endpoint: /employee/<int:ssn>
 
@@ -113,8 +114,8 @@ POSTMAN COMMAND(http://127.0.0.1:5000/employee/999887778)
      "DL_id": "D1234567"
    }
 
-
 3. Add a New Employee
+=======================
 
 Endpoint: /employee
 
@@ -149,8 +150,8 @@ Response example
      "rows_affected": 1
    }
 
-
 4. Update an Employee
+========================
 
 Endpoint: /employee/<int:ssn> 
 
@@ -184,7 +185,7 @@ Request Body Example:
    }
 
 
-#5. Delete an Employee
+5. Delete an Employee
 ==========================
 
 Endpoint: /employee/<int:ssn>
