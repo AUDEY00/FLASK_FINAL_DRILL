@@ -4,8 +4,8 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 app.config["MYSQL_HOST"] = "localhost"
 app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = ""
-app.config["MYSQL_DB"] = "sakila"
+app.config["MYSQL_PASSWORD"] = "groot"
+app.config["MYSQL_DB"] = "company"
 
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 
@@ -25,9 +25,9 @@ def data_fetch(query):
     return data
 
 
-@app.route("/actors", methods=["GET"])
+@app.route("/employee", methods=["GET"])
 def get_actors():
-    data = data_fetch("""select * from actor""")
+    data = data_fetch("""select * from employee""")
     return make_response(jsonify(data), 200)
 
 
@@ -119,3 +119,6 @@ def get_params():
     fmt = request.args.get('id')
     foo = request.args.get('aaaa')
     return make_response(jsonify({"format":fmt, "foo":foo}),200)
+
+if __name__ == "__main__":
+    app.run(debug=True)
