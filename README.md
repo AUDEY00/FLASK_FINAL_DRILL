@@ -14,3 +14,11 @@ This project is a Flask-based RESTful API to manage company employees. It suppor
    ```bash
    git clone https://github.com/yourusername/company-employee-api.git
    cd company-employee-api
+
+Set up a virtual environment (optional but recommended)
+python -m venv (name of your venv)
+# On cmd, use `venv\Scripts\activate` to activate the script of the environment
+
+intall dependencies
+-pip install -r requirements.txt
+
