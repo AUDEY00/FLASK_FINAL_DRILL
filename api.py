@@ -31,29 +31,29 @@ def get_actors():
     return make_response(jsonify(data), 200)
 
 
-@app.route("/employee/<int:id>", methods=["GET"])
-def get_actor_by_id(id):
-    data = data_fetch("""SELECT * FROM actor where actor_id = {}""".format(id))
+@app.route("/employee/<int:ssn>", methods=["GET"])
+def get_actor_by_id(ssn):
+    data = data_fetch("""SELECT * FROM employee where ssn = {}""".format(ssn))
     return make_response(jsonify(data), 200)
 
 
-@app.route("/actors/<int:id>/movies", methods=["GET"])
-def get_movies_by_actor(id):
+@app.route("/employee/<int:ssn>/company", methods=["GET"])
+def get_employee_company(ssn):
     data = data_fetch(
         """
-        SELECT film.title, film.release_year 
-        FROM actor 
-        INNER JOIN film_actor
-        ON actor.actor_id = film_actor.actor_id 
-        INNER JOIN film
-        ON film_actor.film_id = film.film_id 
-        WHERE actor.actor_id = {}
+        SELECT employee.name, employee.ssn,company.name AS company_name 
+        FROM  employee
+        INNER JOIN company
+        ON employee.employee id = company.id
+        INNER JOIN company
+        ON employee.ssn = employee.ssn
+        WHERE employee.ssn = %s
     """.format(
-            id
+            ssn
         )
     )
     return make_response(
-        jsonify({"actor_id": id, "count": len(data), "movies": data}), 200
+        jsonify({"employee_id": ssn, "count": len(data), "movies": data}), 200
     )
 
 
@@ -80,7 +80,7 @@ def add_actor():
     cur.close()
     return make_response(
         jsonify(
-            {"message": "actor added successfully", "rows_affected": rows_affected}
+            {"message": "employee added successfully", "rows_affected": rows_affected}
         ),
         201,
     )
