@@ -60,7 +60,8 @@ The application will be accessible at http://127.0.0.1:5000/.
 
 API Endpoints
 ==============
-#1. Get All Employees
+1. Get All Employees
+=====================
 
    Endpoint: /employee
 
@@ -88,7 +89,8 @@ POSTMAN COMMAND(http://127.0.0.1:5000/employee)
   }
 
 
-#2. Get Employee by SSN
+2. Get Employee by SSN
+=======================
 
 Endpoint: /employee/<int:ssn>
 
@@ -114,7 +116,8 @@ POSTMAN COMMAND(http://127.0.0.1:5000/employee/999887778)
    }
 
 
-#3. Add a New Employee
+3. Add a New Employee
+======================
 
 Endpoint: /employee
 
@@ -150,7 +153,8 @@ Response example
    }
 
 
-#4. Update an Employee
+4. Update an Employee
+======================
 
 Endpoint: /employee/<int:ssn> 
 
@@ -185,6 +189,7 @@ Request Body Example:
 
 
 #5. Delete an Employee
+==========================
 
 Endpoint: /employee/<int:ssn>
 
@@ -250,7 +255,8 @@ Feel free to contribute and open issues if you find any bugs or have suggestions
 
 Copy the above content and paste it into a file named `README.md` in your GitHub repository. This documentation will help others understand your project, set it up, and run it          correctly.
 
-##LICENSED
+LICENSED
+=========
 
 [MIT](http://en.wikipedia.org/wiki/MIT_License) license.
 
