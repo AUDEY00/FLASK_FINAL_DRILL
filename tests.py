@@ -12,7 +12,7 @@ class MyAppTests(unittest.TestCase):
     def test_index_page(self):
         response = self.app.get("/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data.decode(), "<p>Hello, World!</p>")
+        self.assertEqual(response.data.decode(), "<p>COMPANY EMPLOYEE API</p>")
 
     def test_getactors(self):
         response = self.app.get("/employee")
