@@ -1,20 +1,19 @@
 from flask import Flask, make_response, jsonify, request
 from flask_mysqldb import MySQL
-
+from flask import Flask, request, make_response, jsonify
+import dicttoxml
 app = Flask(__name__)
 app.config["MYSQL_HOST"] = "localhost"
 app.config["MYSQL_USER"] = "root"
 app.config["MYSQL_PASSWORD"] = "groot"
 app.config["MYSQL_DB"] = "company"
-
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"
-
 mysql = MySQL(app)
 
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return "<p>COMPANY EMPLOYEE API</p>"
 
 
 def data_fetch(query):
@@ -35,26 +34,6 @@ def get_actors():
 def get_actor_by_id(ssn):
     data = data_fetch("""SELECT * FROM employee where ssn = {}""".format(ssn))
     return make_response(jsonify(data), 200)
-
-
-@app.route("/employee/<int:ssn>/company", methods=["GET"])
-def get_employee_company(ssn):
-    data = data_fetch(
-        """
-        SELECT employee.name, employee.ssn,company.name AS company_name 
-        FROM  employee
-        INNER JOIN company
-        ON employee.employee id = company.id
-        INNER JOIN company
-        ON employee.ssn = employee.ssn
-        WHERE employee.ssn = %s
-    """.format(
-            ssn
-        )
-    )
-    return make_response(
-        jsonify({"employee_id": ssn, "count": len(data), "movies": data}), 200
-    )
 
 
 @app.route("/employee", methods=["POST"])
@@ -175,7 +154,17 @@ def delete_actor(ssn):
 def get_params():
     fmt = request.args.get('id')
     foo = request.args.get('aaaa')
-    return make_response(jsonify({"format":fmt, "foo":foo}),200)
+    output_format = request.args.get('format', 'json').lower()
+    response_data = {"format": fmt, "foo": foo}
+    
+    if output_format == 'xml':
+        response = make_response(dicttoxml.dicttoxml(response_data), 200)
+        response.headers['Content-Type'] = 'application/xml'
+    else:
+        response = make_response(jsonify(response_data), 200)
+        response.headers['Content-Type'] = 'application/json'
+
+    return response
 
 if __name__ == "__main__":
     app.run(debug=True)
