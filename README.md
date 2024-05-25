@@ -24,6 +24,8 @@ This project is a Flask-based RESTful API to manage company employees. It suppor
 intall dependencies
 -'pip install -r requirements.txt'
 
+- pip install Flask dicttoxml
+
 Set Up Mysql database
 
  -Create a database named company.
